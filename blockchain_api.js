@@ -61,8 +61,13 @@ app.get('/validate', (req, res) => {
 
 // add fakeblock
 app.post('/fake', (req, res) => {
-  blockchain.fakeBlock(new Block(req.body.block), req.body.height);
-  res.send('faked');
+  if (req.body.block && req.body.height){
+    blockchain.fakeBlock(new Block(req.body.block), req.body.height);
+    res.send('faked');
+  }
+  else {
+    res.send(`You need to provide 'block' and 'height' to fake a block`);
+  }
 })
 
 // start server

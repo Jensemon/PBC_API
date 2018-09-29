@@ -168,8 +168,8 @@ module.exports = class Blockchain {
               return `Blockchain was successfully validated`
             }
             else {
-              console.log(`Errors found on these blocks ${obj.errLog}`);
-              return `Errors found on these blocks ${obj.errLog}`
+              console.log(`Errors found on these blocks: ${obj.errLog}`);
+              return `Errors found on these blocks: ${obj.errLog}`
             }
           }
         })
