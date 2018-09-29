@@ -1,0 +1,21 @@
+{
+  "name": "privateblockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blockchain_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "private_blockchain"
+  },
+  "author": "Martin Montin",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "level": "^4.0.0"
+  }
+}
