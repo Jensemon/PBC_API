@@ -1,5 +1,5 @@
 # PBC_API
-Private Blockchain RESTful API for Udacity
+Private Blockchain RESTful API for Udacity blockchain developer nano degree
 
 ## Getting Started
 
@@ -69,3 +69,17 @@ The value for `height` has to be an integer, and determines at what height the c
 
 Note that the POST request needs to be urlencoded.
 
+## Built With
+
+* [Express](https://expressjs.com/) - Web framework
+* [LevelDB](http://leveldb.org/) - Database
+
+### Other Dependencies
+
+* [Body-Parser](https://www.npmjs.com/package/body-parser) - Parsing middleware
+* [Crypto-js](https://www.npmjs.com/package/crypto-js) - Cryptography library
+
+## Author
+**Martin Montin**
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
