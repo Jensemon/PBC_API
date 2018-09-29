@@ -22,7 +22,7 @@ Note that data persists, so you should only get the warning the first time you s
 Following is a list of endpoints and how to use them
 
 ### Get Block
-To retrieve a block at block hight 'x' send a GET request to the following endpoint.
+To retrieve a block at block hight `x` send a GET request to 
 ```
 localhost:8000/block/x
 ```
@@ -34,6 +34,7 @@ A GET request to
 localhost:8000/blockheight
 ```
 returns the height of the blockchain. Note that the blockchain is 0-indexed and that the height is the current index, it is not representative of the number of blocks in the chain.
+
 ### Add Block
 To add a block you need to make a POST request using a key and a value. The key needs to be `block` while the value needs to be a non empty string, and will become the body of the added block. The POST request should be made to:
 
@@ -47,16 +48,21 @@ A GET request to
 localhost:8000/validate
 ```
 will try to validate the blockchain. 
+
 If it's validated it will return a message saying `Blockchain was successfully validated`
+
 Otherwise the message reads `Errors found on these blocks: x,y,z` where x,y,z is the blockheight of the blocks that couldn't validate.
 
 ### Add Corrupt Block (for testing)
 For testing purposes an endpoint is provided to create corrupt blocks. This endpoint should be removed if the project is used. 
+
 To add a corrupt block make a POST request to
 ```
 localhost:8000/fake
 ```
 and provide key value pairs for the keys `block` and `height`. 
+
 The value for `block` will be the block body. 
+
 The value for `height` has to be an integer, and determines at what height the corrupt block will be inserted. Height 0 means the genesis block will be replaced with the corrupt block.
 
