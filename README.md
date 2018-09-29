@@ -7,15 +7,13 @@ Make sure you have node installed.
 
 Once you have cloned the project you should be able to simply run the project from its working directory using 
 ```
-node blockchain_api.js`
+node blockchain_api.js
 ```
 The first time you run the application you'll see a warning in the console telling you `Block height not found, create new genesis block...` and further that block 0 was added to the chain.
 
-The blockchain has now been initialized and is ready to use at:
-```
-localhost:8000
-```
-Note that data persists, so you should only get the warning the first time you start the application, after that a genesis block will be found and no block will be added at startup.
+The blockchain has now been initialized and is ready to use.
+
+You will only see the warning the first time you run the application. When you relaunch the application a genesis block already exist in the database.
 
 ## Endpoint Documentation
 
@@ -41,7 +39,7 @@ To add a block you need to make a POST request using a key and a value. The key 
 ```
 localhost:8000/block
 ```
-Note that the POST request needs to be urlencoded.
+The POST request needs to be urlencoded.
 
 ### Validate Blockchain
 A GET request to 
@@ -67,7 +65,7 @@ The value for `block` will be the block body.
 
 The value for `height` has to be an integer, and determines at what height the corrupt block will be inserted. Height 0 means the genesis block will be replaced with the corrupt block.
 
-Note that the POST request needs to be urlencoded.
+The POST request needs to be urlencoded.
 
 ## Built With
 
