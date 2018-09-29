@@ -41,6 +41,7 @@ To add a block you need to make a POST request using a key and a value. The key 
 ```
 localhost:8000/block
 ```
+Note that the POST request needs to be urlencoded.
 
 ### Validate Blockchain
 A GET request to 
@@ -65,4 +66,6 @@ and provide key value pairs for the keys `block` and `height`.
 The value for `block` will be the block body. 
 
 The value for `height` has to be an integer, and determines at what height the corrupt block will be inserted. Height 0 means the genesis block will be replaced with the corrupt block.
+
+Note that the POST request needs to be urlencoded.
 
