@@ -22,11 +22,12 @@ let blockchain = new Blockchain();
 
 // get block
 app.get('/block/:x', (req, res) => {
-  if(req.params.x)
-  blockchain.getBlock(req.params.x)
+  if(req.params.x) {
+    blockchain.getBlock(req.params.x)
     .then(block => {
       res.send(block);
     })
+  }
 })
 
 // add block POST request. Use [key = block] and [value = desired block body]
@@ -37,7 +38,16 @@ app.post('/block', (req, res) => {
   } 
   else if (typeof req.body.block === 'string'){
     blockchain.addBlock(new Block(req.body.block));
-    res.send(`new block added to the blockchain`);
+    // Allows the database half a second to add block then returns the added block as JSON string.
+    setTimeout(() => {
+      blockchain.getBlockHeight()
+        .then(value => {
+          blockchain.getBlock(value)
+            .then((block) => {
+              res.send(JSON.stringify(block));
+            })
+        })
+    }, 500);
   } 
   else {
     res.send('The block value needs to be a string');

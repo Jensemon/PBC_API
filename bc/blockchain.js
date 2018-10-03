@@ -74,7 +74,6 @@ module.exports = class Blockchain {
   getBlockHeight() {
     return db.get("blockHeight")
       .then(value => {
-        console.log(value);
         return value;
       })
       .catch(err => console.log(`Can't find the blockHeight`))
