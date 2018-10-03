@@ -21,13 +21,35 @@ app.use(bodyParser.json())
 let blockchain = new Blockchain();
 
 // get block
-app.get('/block/:x', (req, res) => {
-  if(req.params.x) {
-    blockchain.getBlock(req.params.x)
-    .then(block => {
-      res.send(block);
+app.get('/block/:height', (req, res) => {
+
+  // check current blockheight and see if within bounds
+  blockchain.getBlockHeight()
+    .then(blockHeight => {
+      // convert strings to integers
+      let requestedHeight = parseInt(req.params.height);
+      let currentHeight = parseInt(blockHeight);
+
+      if (requestedHeight > 0 && requestedHeight <= currentHeight) {
+        blockchain.getBlock(req.params.height)
+          .then(block => {
+            res.send(block);
+          })
+      }
+      // if out of bounds return a 404
+      else {
+        res.status(404).send('Block not found')
+      }
     })
-  }
+
+
+  // // Error handling at the blockchain level, does not send a 404.
+  // if(req.params.height) {
+  //   blockchain.getBlock(req.params.height)
+  //   .then(block => {
+  //     res.send(block);
+  //   })
+  // }
 })
 
 // add block POST request. Use [key = block] and [value = desired block body]
