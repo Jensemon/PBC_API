@@ -30,7 +30,7 @@ app.get('/block/:height', (req, res) => {
       let requestedHeight = parseInt(req.params.height);
       let currentHeight = parseInt(blockHeight);
 
-      if (requestedHeight > 0 && requestedHeight <= currentHeight) {
+      if (requestedHeight >= 0 && requestedHeight <= currentHeight) {
         blockchain.getBlock(req.params.height)
           .then(block => {
             res.send(block);
